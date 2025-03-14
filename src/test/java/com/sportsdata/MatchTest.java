@@ -33,4 +33,21 @@ public class MatchTest {
         assertEquals(0, match.getHomeScore());
         assertEquals(0, match.getAwayScore());
     }
+
+    @Test
+    void testNegativeScoreUpdate() {
+        assertThrows(IllegalArgumentException.class, () -> match.setScore(-1, 0));
+    }
+
+    @Test
+    void testUnrealisticScoreUpdate() {
+        assertThrows(IllegalArgumentException.class, () -> match.setScore(0, 10000));
+    }
+
+    @Test
+    void testUpdateScore() {
+        match.setScore(2, 1);
+        assertEquals(2, match.getHomeScore());
+        assertEquals(1, match.getAwayScore());
+    }
 }

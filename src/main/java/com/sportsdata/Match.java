@@ -31,4 +31,15 @@ public class Match {
     public int getAwayScore() {
         return awayScore;
     }
+
+    public void setScore(int homeScore, int awayScore) {
+        if (homeScore < 0 || awayScore < 0) {
+            throw new IllegalArgumentException("Score cannot be negative");
+        }
+        if (homeScore > Constants.MAX_SCORE_PER_TEAM || awayScore > Constants.MAX_SCORE_PER_TEAM) {
+            throw new IllegalArgumentException("Score cannot be greater than " + Constants.MAX_SCORE_PER_TEAM);
+        }
+        this.homeScore = homeScore;
+        this.awayScore = awayScore;
+    }
 }
