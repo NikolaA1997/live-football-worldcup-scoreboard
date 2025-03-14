@@ -89,4 +89,31 @@ public class ScoreboardTest {
         scoreboard.finishMatch("Mexico", "Canada");
         assertEquals(0, scoreboard.getSummary().size());
     }
+
+    @Test
+    public void testSummarySorting() {
+        List<Match> summary = getMatches();
+        assertEquals("Uruguay 6 - Italy 6", summary.get(0).toString());
+        assertEquals("Spain 10 - Brazil 2", summary.get(1).toString());
+        assertEquals("Mexico 0 - Canada 5", summary.get(2).toString());
+        assertEquals("Argentina 3 - Australia 1", summary.get(3).toString());
+        assertEquals("Germany 2 - France 2", summary.get(4).toString());
+    }
+
+    private static List<Match> getMatches() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Mexico", "Canada");
+        scoreboard.startMatch("Spain", "Brazil");
+        scoreboard.startMatch("Germany", "France");
+        scoreboard.startMatch("Uruguay", "Italy");
+        scoreboard.startMatch("Argentina", "Australia");
+
+        scoreboard.updateScore("Mexico", "Canada", 0, 5);
+        scoreboard.updateScore("Spain", "Brazil", 10, 2);
+        scoreboard.updateScore("Germany", "France", 2, 2);
+        scoreboard.updateScore("Uruguay", "Italy", 6, 6);
+        scoreboard.updateScore("Argentina", "Australia", 3, 1);
+
+        return scoreboard.getSummary();
+    }
 }
