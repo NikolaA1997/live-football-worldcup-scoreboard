@@ -23,4 +23,14 @@ public class Scoreboard {
         sortedMatches.sort(Comparator.comparingInt(Match::getTotalScore).reversed());
         return sortedMatches;
     }
+
+    public void updateScore(String homeTeam, String awayTeam, int homeScore, int awayScore) {
+        for (Match match : matches) {
+            if (match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam)) {
+                match.setScore(homeScore, awayScore);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Match not found");
+    }
 }
