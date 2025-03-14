@@ -48,4 +48,11 @@ public class MatchTest {
         assertEquals(2, match.getHomeScore());
         assertEquals(1, match.getAwayScore());
     }
+
+    @Test
+    void testGetTotalScore() {
+        assertEquals(0, match.getTotalScore());
+        match.setScore(2, 3);
+        assertEquals(5, match.getTotalScore());
+    }
 }
