@@ -3,8 +3,7 @@ package com.sportsdata;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class MatchTest {
 
@@ -54,5 +53,12 @@ public class MatchTest {
         assertEquals(0, match.getTotalScore());
         match.setScore(2, 3);
         assertEquals(5, match.getTotalScore());
+    }
+
+    @Test
+    void testMatchSummary() {
+        assertEquals("Germany 0 - France 0", match.getSummary());
+        match.setScore(2, 1);
+        assertEquals("Germany 2 - France 1", match.getSummary());
     }
 }

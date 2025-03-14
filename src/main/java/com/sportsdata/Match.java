@@ -56,4 +56,13 @@ public class Match {
     public int getTotalScore() {
         return homeScore + awayScore;
     }
+
+    public String getSummary() {
+        return homeTeam + " " + homeScore + " - " + awayTeam + " " + awayScore;
+    }
+
+    @Override
+    public String toString() {
+        return getSummary();
+    }
 }
