@@ -22,7 +22,7 @@ public class MatchTest {
         assertThrows(IllegalArgumentException.class, () -> new Match("Germany", ""));
         assertThrows(IllegalArgumentException.class, () -> new Match("a".repeat(Match.MAX_TEAM_NAME_LENGTH+1), "France"));
         assertThrows(IllegalArgumentException.class, () -> new Match("Germany", "a".repeat(Match.MAX_TEAM_NAME_LENGTH+1)));
-
+        assertThrows(IllegalArgumentException.class, () -> new Match("Germany", "Germany"));
     }
 
     @Test
