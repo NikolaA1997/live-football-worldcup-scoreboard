@@ -61,4 +61,11 @@ public class MatchTest {
         match.setScore(2, 1);
         assertEquals("Germany 2 - France 1", match.getSummary());
     }
+
+    @Test
+    void testToString() {
+        assertEquals("Germany 0 - France 0", match.toString());
+        match.setScore(3, 2);
+        assertEquals("Germany 3 - France 2", match.toString());
+    }
 }
