@@ -14,6 +14,9 @@ public class Scoreboard {
             if (match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam)) {
                 throw new IllegalArgumentException("Match already exists");
             }
+            if (match.getHomeTeam().equals(awayTeam) && match.getAwayTeam().equals(homeTeam)) {
+                throw new IllegalArgumentException("Match with reversed teams already exists");
+            }
         }
         matches.addFirst(new Match(homeTeam, awayTeam));
     }

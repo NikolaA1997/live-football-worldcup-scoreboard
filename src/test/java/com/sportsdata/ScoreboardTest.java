@@ -17,6 +17,9 @@ public class ScoreboardTest {
         scoreboard.startMatch("Mexico", "Canada");
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("Mexico", "Canada"));
 
+        // Already existing match (reversed)
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("Canada", "Mexico"));
+
         // Invalid teams provided
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch(null, "Canada"));
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("Mexico", null));
