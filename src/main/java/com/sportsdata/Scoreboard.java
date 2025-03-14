@@ -36,4 +36,11 @@ public class Scoreboard {
         }
         throw new IllegalArgumentException("Match not found");
     }
+
+    public void finishMatch(String homeTeam, String awayTeam) {
+        boolean removed = matches.removeIf(match -> match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam));
+        if (!removed) {
+            throw new IllegalArgumentException("Match not found");
+        }
+    }
 }

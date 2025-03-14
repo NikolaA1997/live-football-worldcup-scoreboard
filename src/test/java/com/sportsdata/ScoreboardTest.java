@@ -73,4 +73,20 @@ public class ScoreboardTest {
         assertEquals(0, match.getHomeScore());
         assertEquals(5, match.getAwayScore());
     }
+
+    @Test
+    public void testInvalidFinishMatch() {
+        Scoreboard scoreboard = new Scoreboard();
+
+        // Match not found
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.finishMatch("Germany", "France"));
+    }
+
+    @Test
+    public void testFinishMatch() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Mexico", "Canada");
+        scoreboard.finishMatch("Mexico", "Canada");
+        assertEquals(0, scoreboard.getSummary().size());
+    }
 }
