@@ -18,12 +18,12 @@ public class MatchTest {
     @Test
     void testInvalidMatchCreation() {
         assertThrows(IllegalArgumentException.class, () -> new Match(null, "France"));
-
         assertThrows(IllegalArgumentException.class, () -> new Match("Germany", null));
-
         assertThrows(IllegalArgumentException.class, () -> new Match("", "France"));
-
         assertThrows(IllegalArgumentException.class, () -> new Match("Germany", ""));
+        assertThrows(IllegalArgumentException.class, () -> new Match("a".repeat(Match.MAX_TEAM_NAME_LENGTH+1), "France"));
+        assertThrows(IllegalArgumentException.class, () -> new Match("Germany", "a".repeat(Match.MAX_TEAM_NAME_LENGTH+1)));
+
     }
 
     @Test
@@ -35,13 +35,11 @@ public class MatchTest {
     }
 
     @Test
-    void testNegativeScoreUpdate() {
+    void testInvalidScoreUpdate() {
         assertThrows(IllegalArgumentException.class, () -> match.setScore(-1, 0));
-    }
-
-    @Test
-    void testUnrealisticScoreUpdate() {
-        assertThrows(IllegalArgumentException.class, () -> match.setScore(0, 10000));
+        assertThrows(IllegalArgumentException.class, () -> match.setScore(0, -1));
+        assertThrows(IllegalArgumentException.class, () -> match.setScore(0, Match.MAX_TEAM_SCORE+1));
+        assertThrows(IllegalArgumentException.class, () -> match.setScore(Match.MAX_TEAM_SCORE+1, 0));
     }
 
     @Test
