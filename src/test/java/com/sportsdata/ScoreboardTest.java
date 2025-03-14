@@ -23,6 +23,8 @@ public class ScoreboardTest {
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("", "Canada"));
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("Mexico", ""));
         assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("Mexico", "Mexico"));
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("Mexico", "a".repeat(Match.MAX_TEAM_NAME_LENGTH+1)));
+        assertThrows(IllegalArgumentException.class, () -> scoreboard.startMatch("a".repeat(Match.MAX_TEAM_NAME_LENGTH+1), "Canada"));
     }
 
     @Test
