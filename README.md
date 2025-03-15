@@ -52,6 +52,11 @@ scoreboard.finishMatch("Mexico", "Canada");
 
 This project uses Maven for building and testing:
 
+```sh
+mvn clean package
+mvn test
+```
+
 ## Requirements
 
 - Java 17 or higher
